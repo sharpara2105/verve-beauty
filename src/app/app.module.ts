@@ -14,12 +14,22 @@ import { environment } from 'src/environments/environment';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-
+import { LoginComponent } from './login/login.component';
+import * as firebase from 'firebase';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { UserService } from './user.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    LoginComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,21 +41,47 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
     NgbPaginationModule,
     NgbAlertModule,
     RouterModule.forRoot([
-      {path : 'cart',
+    {
+      path : 'cart',
       component: ShoppingCartComponent
   },
-  {path : 'my/orders',
-  component: MyOrdersComponent
+  {
+    path : 'my/orders',
+    component: MyOrdersComponent,
+    canActivate:[AuthGuardService]
 },
-{path : 'admin/orders',
-component: AdminOrdersComponent
+{
+  path : 'check-out',
+  component: CheckOutComponent,
+  canActivate:[AuthGuardService]
 },
-{path : 'admin/products',
-component: AdminProductsComponent
+{
+  path : 'admin/orders',
+  component: AdminOrdersComponent,
+  canActivate:[AuthGuardService,AdminAuthGuardService]
+},
+{
+  path : 'admin/products',
+  component: AdminProductsComponent,
+  canActivate:[AuthGuardService,AdminAuthGuardService]
+  },
+{
+  path : 'admin/products/new',
+  component: ProductFormComponent,
+  canActivate:[AuthGuardService,AdminAuthGuardService]
+},
+{
+  path : 'login',
+component: LoginComponent
 }
-    ])
+  ])
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    AdminAuthGuardService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

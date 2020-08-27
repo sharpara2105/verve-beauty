@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'verve-beauty';
+  constructor(private auth : AuthService, private route: Router,private userService : UserService) {
+    auth.user$.subscribe(user =>{
+      if(user) {
+        userService.save(user);
+        let returnurl = localStorage.getItem('returnUrl');
+        console.log(returnurl);
+        route.navigateByUrl(returnurl);
+        localStorage.clear();
+      }
+    })
+  }
 }
