@@ -22,6 +22,9 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { CategoryService } from './category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './product.service';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ firebase.initializeApp(environment.firebase);
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
+    FormsModule,
     RouterModule.forRoot([
     {
       path : 'cart',
@@ -81,7 +85,9 @@ component: LoginComponent
     AuthService,
     AuthGuardService,
     AdminAuthGuardService,
-    UserService
+    UserService,
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
