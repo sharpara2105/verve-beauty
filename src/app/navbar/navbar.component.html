@@ -1,12 +1,12 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="\assets\static\vb.png" width="60" height="60" alt="">
+        <img src="\assets\static\3.png" width="60" height="60" alt="">
       </a>
-    <a class="navbar-brand" routerLink = '/cart'>ShoppingCart</a>
+    <a class="navbar-brand" routerLink = '/cart'>Shoppingcart</a>
     <ng-template #anonymousUser>
     <a class="navbar-brand" routerLink = '/login'>Login</a>
   </ng-template>
-  <a class="navbar-brand" routerLink = '/check-out'>CheckOut</a>
+  <a class="navbar-brand" routerLink = '/check-out'>Checkout</a>
     <div *ngIf="appUser;else anonymousUser" ngbDropdown class="d-inline-block">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" ngbDropdownToggle>{{appUser.name}}</a>
       <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">

@@ -3,7 +3,7 @@ import { CategoryService } from 'src/app/category.service';
 import {map} from 'rxjs/operators';
 import {take} from 'rxjs/operators';
 import { ProductService } from 'src/app/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -13,17 +13,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductFormComponent{
   categories$;
+  id;
   product:any = {};
-  constructor(private categoryservice: CategoryService,private saveproduct: ProductService,private route: ActivatedRoute) {
-
+  constructor(
+    private categoryservice: CategoryService,
+    private saveproduct: ProductService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.categories$ = categoryservice.getCategories();
-    let id = this.route.snapshot.paramMap.get('id');
-    if(id){
-      this.saveproduct.get(id).subscribe(p => this.product =p);
+    this.id = this.route.snapshot.paramMap.get('id');
+    if(this.id && this.id != 'new'){
+      this.saveproduct.get(this.id).pipe(take(1)).subscribe(p => this.product =p);
     }
    }
-   save(product){
-     this.saveproduct.create(product);
+   save(p){
+     if(this.id){ //bec this time id would be the 'key' only and not new !
+       this.saveproduct.update(this.id,p);
+       this.router.navigate(['admin/products']);
+       return;
+     }
+     this.saveproduct.create(p);
+     this.router.navigate(['admin/products']);
+   }
+   delete()
+   {
+     if(!confirm('Are you sure you want to delete this product')) return;
+    this.saveproduct.delete(this.id);
+    this.router.navigate(['admin/products']);
    }
    
 }

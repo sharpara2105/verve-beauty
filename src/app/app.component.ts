@@ -15,7 +15,6 @@ export class AppComponent {
       if(user) {
         userService.save(user);
         let returnurl = localStorage.getItem('returnUrl');
-        console.log(returnurl);
         route.navigateByUrl(returnurl);
         localStorage.clear();
       }
