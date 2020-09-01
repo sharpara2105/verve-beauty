@@ -1,17 +1,47 @@
 <a routerLink="/admin/products/new" class = "btn btn-primary">New Product</a>
 <p>
-  <input type="text" class= "form-control" placeholder="search..." #query (keyUp)= "filter(query.value)">
+  <input type="text" class= "form-control" placeholder="search..." #query (keyup)= "filter(query.value)">
 </p>
-<table class="table table-dark">
+<!-- <data-table 
+  [items] = "items"
+  [itemCount] = "itemCount"
+  (reload) = "reloadItems($event)"
+>
+  <data-table-column
+    [property]="'title'"
+    [header] = "'Title'"
+    [resizable] = "true"
+    [sortable] = "true"
+  >
+  </data-table-column>
+  <data-table-column
+    [property]="'price'"
+    [header] = "'Price'"
+    [resizable] = "true"
+    [sortable] = "true"
+  >
+  <ng-template #dataTableCell let-item="item">
+    {{item.price | currency :'USD' : true}}
+  </ng-template>
+  </data-table-column>
+  <data-table-column
+    [property]="'key'"
+  >
+  <ng-template #dataTableCell let-item="item">
+    <a [routerLink] = "['/admin/products/',e.key]"> Edit </a>
+  </ng-template>
+  </data-table-column>
+</data-table> -->
+<table  #d datatable class="table table-light row-border hover" [dtOptions]="dtOptions">
     <thead>
-      <tr>
+      <tr  class="table-dark">
         <th scope="col">Title</th>
         <th scope="col">Price</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let e of elem">
+        <tr *ngFor="let e of filteredProducts">
             <td>{{e.title}}</td>
             <td>{{e.price}}</td>
             <td>

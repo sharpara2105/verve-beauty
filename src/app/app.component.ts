@@ -12,12 +12,13 @@ export class AppComponent {
   title = 'verve-beauty';
   constructor(private auth : AuthService, private route: Router,private userService : UserService) {
     auth.user$.subscribe(user =>{
-      if(user) {
+      if(! user) return; 
         userService.save(user);
         let returnurl = localStorage.getItem('returnUrl');
+        if(!returnurl) return;
         route.navigateByUrl(returnurl);
         localStorage.clear();
-      }
+      
     })
   }
 }
