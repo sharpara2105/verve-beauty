@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { AngularFireDatabase} from '@angular/fire/database';
+import { combineLatest} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
+  product=[];
   constructor(private db : AngularFireDatabase) {
    }
    create(product){
@@ -26,5 +26,11 @@ export class ProductService {
   }
   delete(productId){
     this.db.object('/product/'+productId).remove();
+  }
+  getdataAndmetadata(){
+    return combineLatest([
+      this.db.list('/product').valueChanges(),
+      this.db.list('/product').snapshotChanges()
+    ])
   }
 }

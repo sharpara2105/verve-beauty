@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgbModule,NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import {DataTablesModule} from 'angular-datatables';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,6 +27,10 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { ProductsComponent } from './products/products.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -35,6 +40,12 @@ firebase.initializeApp(environment.firebase);
     LoginComponent,
     ProductFormComponent,
     AdminProductsComponent,
+    ProductsComponent,
+    MyOrdersComponent,
+    AdminOrdersComponent,
+    CheckOutComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +59,10 @@ firebase.initializeApp(environment.firebase);
     NgbAlertModule,
     FormsModule,
     RouterModule.forRoot([
+      {
+        path : '',
+        component: ProductsComponent
+    },
     {
       path : 'cart',
       component: ShoppingCartComponent
@@ -94,7 +109,8 @@ component: LoginComponent
     AdminAuthGuardService,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
