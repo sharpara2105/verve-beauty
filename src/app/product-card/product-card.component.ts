@@ -11,10 +11,12 @@ export class ProductCardComponent  {
   @Input('showAction') showAction;
   @Input('shoppingCart') shoppingCart;
   constructor(private cartService:ShoppingCartService) {}
-  addtoCart(product){
-    this.cartService.addTocart(product);
+  addtoCart(){
+    this.cartService.addTocart(this.product);
   }
-
+  removeFromCart(){
+    this.cartService.removeFromCart(this.product);
+  }
   getQuantity(){
     if(!this.shoppingCart) return 0;
     let item = this.shoppingCart.items[this.product.key];

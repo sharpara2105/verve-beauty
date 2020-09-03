@@ -1,6 +1,10 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="\assets\static\yy.png" width="60" height="60" alt="">
-    <a class="navbar-brand" routerLink = '/cart'>Shoppingcart</a>
+    <a class="navbar-brand" routerLink = '/cart'>Shoppingcart
+      <span *ngIf="cart$|async as cart" class="badge badge-pill badge-warning">
+        {{cart.totalItemsCount}}
+      </span>
+    </a>
     <ng-template #anonymousUser>
     <a class="navbar-brand" routerLink = '/login'>Login</a>
   </ng-template>
