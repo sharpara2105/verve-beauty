@@ -15,9 +15,6 @@ export class ProductService {
    getData(){
      return this.db.list('/product').valueChanges();
    }
-   getMetadata(){
-    return this.db.list('/product').snapshotChanges();
-  }
   get(productId) {
     return this.db.object('/product/'+productId).valueChanges();
   }

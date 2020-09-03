@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 
 
@@ -10,15 +11,19 @@ import { Subscription } from 'rxjs';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnDestroy {
+export class ProductsComponent implements OnInit, OnDestroy {
   product$;
+  cart;
   product=[];
   subscription : Subscription;
+  subscribe : Subscription;
   filteredProduct=[];
   category: String;
   constructor(
     private productservice : ProductService,
-    private route : ActivatedRoute) { 
+    private route : ActivatedRoute,
+    private shoppingcartService : ShoppingCartService
+    ) { 
     this.product$ = this.productservice.getData();
    
     this.subscription = this.productservice.getdataAndmetadata().subscribe(combine =>{
@@ -40,5 +45,11 @@ export class ProductsComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscribe.unsubscribe();
+}
+async ngOnInit(){
+  this.subscribe = (await this.shoppingcartService.getCart()).subscribe(cart => {
+    this.cart = cart;
+  });
 }
 }
