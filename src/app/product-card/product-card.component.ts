@@ -6,17 +6,11 @@ import { ShoppingCartService } from '../shopping-cart.service';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent  {
+export class ProductCardComponent{
   @Input('product') product;
   @Input('showAction') showAction;
   @Input('shoppingCart') shoppingCart;
   constructor(private cartService:ShoppingCartService) {}
- 
-  // getQuantity(){
-  //   if(!this.shoppingCart) return 0;
-  //   let item = this.shoppingCart.itemsMap[this.product.key];
-  //   return item?item.quantity:0;
-  // }
   addtoCart(){
     this.cartService.addTocart(this.product);
   }

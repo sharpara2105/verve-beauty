@@ -3,6 +3,8 @@ import {ShoppingCartItem} from './shopping-cart-item';
 export class ShoppingCart{
     items : ShoppingCartItem[]=[];
     constructor(public itemsMap :{[key:string]:ShoppingCartItem}){ 
+      this.itemsMap= this.itemsMap||{};
+
       for(let key in itemsMap){
         let item = itemsMap[key];
         this.items.push(new ShoppingCartItem(item['product'],item['quantity']));
@@ -24,8 +26,9 @@ export class ShoppingCart{
       return price;
     }
     getQuantity(product){
+      if(!this.itemsMap) return 0;
       let item =this.itemsMap[product.key];
-      return item['quantity'];
+      return (item)?item['quantity']:0;
     }
 
 }

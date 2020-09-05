@@ -6,6 +6,7 @@ import { take } from 'rxjs/operators'
 import {map} from 'rxjs/operators';
 import { ShoppingCart } from './models/shopping-cart';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,13 @@ export class ShoppingCartService{
   }
   async removeFromCart(product){
     this.updateItemQuantity(product,-1);
+  }
+  async clearCart(){
+    let cartId = await this.getOrcreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items/').remove();
+    
+
+
   }
   async getCart(){
     let cartId = await this.getOrcreateCartId();
