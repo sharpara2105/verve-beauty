@@ -3,6 +3,10 @@
     height: 80px;
     border-radius: 100%;
 }
-.btnSize{
+.clearSize{
     margin-left: 50px;
+}
+.checkSize{
+    margin-left: 150px;
+
 }

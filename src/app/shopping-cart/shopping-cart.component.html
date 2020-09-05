@@ -32,7 +32,9 @@
         </tr>
       </tfoot>
       </table>
-      <button class="btn btn-danger btn-sm btnSize" (click)="clearCart()">clear cart</button>
+      <button *ngIf ="cart.items.length" class="btn btn-danger btn-sm clearSize" (click)="clearCart()">clear cart</button>
+      <a *ngIf ="cart.items.length" class="btn btn-warning btn-sm checkSize" routerLink="/check-out">check out</a>
+      <p *ngIf ="!cart.items.length" class="text-center">your cart misses items.. :(</p>
 </ng-container>
 
 
