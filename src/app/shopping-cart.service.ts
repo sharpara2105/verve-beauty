@@ -36,7 +36,8 @@ export class ShoppingCartService{
   }
   async getCart(){
     let cartId = await this.getOrcreateCartId();
-    return this.db.object('/shopping-carts/'+cartId).valueChanges();
+    return this.db.object('/shopping-carts/'+cartId).valueChanges()
+    .pipe(map(x=>new ShoppingCart(x['items'])));
   }
   private async updateItemQuantity(product,change:number){
     let cartId = await this.getOrcreateCartId();

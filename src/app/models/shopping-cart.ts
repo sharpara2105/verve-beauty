@@ -10,6 +10,7 @@ export class ShoppingCart{
         for(let productId in this.items){
        count += this.items[productId]['quantity'];
       }
+    
       return count;
     }
     get productIds(){
