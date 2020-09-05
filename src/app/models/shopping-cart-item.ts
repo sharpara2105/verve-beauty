@@ -1,7 +1,5 @@
+import {product} from './product';
 export interface ShoppingCartItem {
-    title : String,
-    price : number,
-    category: String,
-    imageUrl: String,
-    quantity : number
+    product : product,
+    quantity : number,
 }
