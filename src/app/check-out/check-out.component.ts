@@ -1,16 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCart } from '../models/shopping-cart';
+import { Subscription } from 'rxjs';
+import { OrderService } from '../order.service';
+import { AuthService } from '../auth.service';
+import { order } from '../models/order';
 
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.css']
 })
-export class CheckOutComponent{
+export class CheckOutComponent implements OnInit,OnDestroy{
   shipping:any = {};
-  constructor() { }
+  cart:ShoppingCart;
+  userId:string;
+  subscription : Subscription;
+  userSubscription : Subscription;
+  constructor(
+    private cartservice:ShoppingCartService,
+    private orderService:OrderService,
+    private authService:AuthService) {}
+  async ngOnInit(){
+    let cart$ = await this.cartservice.getCart();
+    this.subscription = cart$.subscribe(cart=>this.cart=cart);
+    this.userSubscription =this.authService.user$.subscribe(user=>this.userId =user.uid);
+  }
   
   placeOrder() {
-    console.log(this.shipping);
+    let newOrder = new order(this.shipping,this.userId,this.cart)
+    this.orderService.storeOrder(newOrder.order);
   }   
-
+ngOnDestroy(){
+  this.subscription.unsubscribe();
+  this.userSubscription.unsubscribe();
+}
 }
