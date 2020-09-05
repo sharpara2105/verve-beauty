@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCart } from '../models/shopping-cart';
 
 
 
@@ -13,7 +14,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   product$;
-  cart;
+  cart$:Observable<ShoppingCart>;
   product=[];
   subscription : Subscription;
   subscribe : Subscription;
@@ -45,11 +46,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscribe.unsubscribe();
 }
 async ngOnInit(){
-  this.subscribe = (await this.shoppingcartService.getCart()).subscribe(cart => {
-    this.cart = cart;
-  });
+  this.cart$ = await this.shoppingcartService.getCart();
 }
 }
