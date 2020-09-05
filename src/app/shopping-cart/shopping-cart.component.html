@@ -15,9 +15,17 @@
         <th scope="row"></th>
         <td>{{item.product.title}}</td>
         <td>{{item.quantity}}</td>
-        <td>{{item.product.price}}</td>
+        <td>{{item.totalPrice}}</td>
       </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total</td>
+          <td>{{cart.totalSum}}</td>
+        </tr>
+      </tfoot>
       </table>
 
 </ng-container>
