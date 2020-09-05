@@ -4,28 +4,28 @@
    <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col"> </th>
+        <th scope="col" class="text-left"> </th>
         <th scope="col">Product</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
+        <th scope="col" class="text-center">Quantity</th>
+        <th class="text-right" scope="col">Price</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of cart.items" >
         <th scope="row"></th>
-        <td>{{item.product.title}}</td>
+        <td class="text-left">{{item.product.title}}</td>
         <td>
           <app-product-quantity [product]="item.product" [shoppingCart]="cart"></app-product-quantity>
         </td>
-        <td>{{item.totalPrice}}</td>
+        <td class="text-right">{{item.totalPrice}}</td>
       </tr>
       </tbody>
       <tfoot>
         <tr>
           <td></td>
           <td></td>
-          <td>Total</td>
-          <td>{{cart.totalSum}}</td>
+          <td class="text-center">Total</td>
+          <td class="text-right">{{cart.totalSum}}</td>
         </tr>
       </tfoot>
       </table>

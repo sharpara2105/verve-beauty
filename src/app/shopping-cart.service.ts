@@ -53,6 +53,11 @@ export class ShoppingCartService{
     let item$$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
     item$.pipe(take(1)).subscribe(item =>{
       if(item){
+        let quantity = (item['quantity']||0)+change;
+        if(quantity ===0) {
+          item$$.remove();
+          return;
+        }
         item$$.update(
           {
             product :product,
