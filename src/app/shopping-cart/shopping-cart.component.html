@@ -4,8 +4,9 @@
    <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col" class="text-left"> </th>
-        <th scope="col">Product</th>
+        <th scope="col" > </th>
+        <th scope="col" > </th>
+        <th scope="col" class="text-left">Product</th>
         <th scope="col" class="text-center">Quantity</th>
         <th class="text-right" scope="col">Price</th>
       </tr>
@@ -13,6 +14,7 @@
     <tbody>
       <tr *ngFor="let item of cart.items" >
         <th scope="row"></th>
+        <td><img [src]="item.product.imageUrl" class="thumbnail"></td>
         <td class="text-left">{{item.product.title}}</td>
         <td>
           <app-product-quantity [product]="item.product" [shoppingCart]="cart"></app-product-quantity>
@@ -24,12 +26,13 @@
         <tr>
           <td></td>
           <td></td>
+          <td></td>
           <td class="text-center">Total</td>
           <td class="text-right">{{cart.totalSum}}</td>
         </tr>
       </tfoot>
       </table>
-      <button class="btn btn-danger btn-sm" (click)="clearCart()">clear cart</button>
+      <button class="btn btn-danger btn-sm btnSize" (click)="clearCart()">clear cart</button>
 </ng-container>
 
 
