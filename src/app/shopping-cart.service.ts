@@ -28,27 +28,32 @@ export class ShoppingCartService{
       return result.key;
   }
   async addTocart(product) {
-    let cartId = await this.getOrcreateCartId();
+    // let cartId = await this.getOrcreateCartId();
     this.updateItemQuantity(product,1);  
   }
   async removeFromCart(product){
     this.updateItemQuantity(product,-1);
   }
-  async getCart():Promise<Observable<ShoppingCart>>{
+  async getCart(){
     let cartId = await this.getOrcreateCartId();
-    return this.db.object('/shopping-carts/'+cartId).valueChanges()
-    .pipe(map(x=> new ShoppingCart(x['items'])))
+    return this.db.object('/shopping-carts/'+cartId).valueChanges();
   }
   private async updateItemQuantity(product,change:number){
     let cartId = await this.getOrcreateCartId();
     let item$ = this.db.object('/shopping-carts/'+cartId+'/items/'+product.key).valueChanges();
     let item$$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.key);
     item$.pipe(take(1)).subscribe(item =>{
+      if(item){
         item$$.update(
           {
             product :product,
             quantity : (item['quantity']||0)+change
           });
+      }
+      else{
+        item$$.set({product:product,quantity:1});
+      }
+        
     });
 
   }

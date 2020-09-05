@@ -9,7 +9,7 @@ import { ShoppingCart } from '../models/shopping-cart';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit{
-  cart$: Observable<ShoppingCart>;
+  cart$
 
   constructor(private cartservice: ShoppingCartService) { 
   }
