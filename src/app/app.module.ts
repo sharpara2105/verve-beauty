@@ -33,6 +33,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './shopping-cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { OrderService } from './order.service';
+import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ShoppingCartSummmaryComponent } from './shopping-cart-summmary/shopping-cart-summmary.component';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ firebase.initializeApp(environment.firebase);
     CheckOutComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    OrderSuccessComponent,
+    ShoppingCartSummmaryComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +107,10 @@ firebase.initializeApp(environment.firebase);
 {
   path : 'login',
 component: LoginComponent
+},
+{
+  path : 'order-success/:id',
+  component: OrderSuccessComponent,
 }
   ])
   ],
