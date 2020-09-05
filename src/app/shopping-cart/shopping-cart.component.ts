@@ -15,11 +15,5 @@ export class ShoppingCartComponent implements OnInit{
   }
 async ngOnInit(){
   this.cart$= await this.cartservice.getCart();
-//   this.cart$.subscribe(cart=>{
-//     for(let key in cart['items']){
-//       console.log(cart['items'][key]['product']['title']);
-
-//     }
-//   });
 }
 }

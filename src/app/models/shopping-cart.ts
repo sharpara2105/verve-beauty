@@ -23,5 +23,9 @@ export class ShoppingCart{
       }
       return price;
     }
+    getQuantity(product){
+      let item =this.itemsMap[product.key];
+      return item['quantity'];
+    }
 
 }
