@@ -3,6 +3,15 @@
         <h4 class="card-title">Order Summary</h4>
         <p class="card-text" *ngIf="cart.totalItemsCount"> you have {{cart.totalItemsCount}} items in your shopping cart </p>
         <ul class="list-group">
-            <li class="list-group-item"></li>
+            <li class="list-group-item" *ngFor="let item of cart.items">{{item['quantity']}} x {{item['product']['title']}}
+                <div class="float-right"> 
+                    {{item['totalPrice']}}
+                </div>
+            </li>
+            <li class="list-group-item">Total
+            <div class="float-right">
+                {{cart.totalSum|currency:'USD':true}}
+            </div>
+        </li>
         </ul>
     </div>

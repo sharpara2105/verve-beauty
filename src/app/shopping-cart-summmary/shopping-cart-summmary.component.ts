@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Component({
   selector: 'app-shopping-cart-summmary',
@@ -6,9 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./shopping-cart-summmary.component.css']
 })
 export class ShoppingCartSummmaryComponent implements OnInit {
-  @Input('cart') cart;
+  @Input('cart') cart:ShoppingCart;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

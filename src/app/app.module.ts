@@ -35,6 +35,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 import { OrderService } from './order.service';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ShoppingCartSummmaryComponent } from './shopping-cart-summmary/shopping-cart-summmary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ firebase.initializeApp(environment.firebase);
     ProductCardComponent,
     ProductQuantityComponent,
     OrderSuccessComponent,
-    ShoppingCartSummmaryComponent
+    ShoppingCartSummmaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
