@@ -1,3 +1,9 @@
 .clickProperty {
     cursor: pointer;
 }
+.mgIcon {
+    margin-left: 25px;
+}
+.bg-dark {
+    background-color: #000000 !important;
+}
