@@ -29,6 +29,7 @@
     "datatables.net-dt": "^1.10.20",
     "firebase": "^7.19.0",
     "firebase-tools": "^8.9.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "ng-bootstrap": "^1.6.3",
     "ng2-validation": "^4.2.0",
