@@ -36,6 +36,7 @@ import { OrderService } from './order.service';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ShoppingCartSummmaryComponent } from './shopping-cart-summmary/shopping-cart-summmary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { CarouselComponent } from './carousel/carousel.component';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ firebase.initializeApp(environment.firebase);
     ProductQuantityComponent,
     OrderSuccessComponent,
     ShoppingCartSummmaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
