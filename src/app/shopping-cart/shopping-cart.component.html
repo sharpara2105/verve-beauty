@@ -19,7 +19,7 @@
         <td>
           <app-product-quantity [product]="item.product" [shoppingCart]="cart"></app-product-quantity>
         </td>
-        <td class="text-right">{{item.totalPrice}}</td>
+        <td class="text-right">{{item.totalPrice|currency:'USD':true}}</td>
       </tr>
       </tbody>
       <tfoot>
@@ -28,13 +28,13 @@
           <td></td>
           <td></td>
           <td class="text-center">Total</td>
-          <td class="text-right">{{cart.totalSum}}</td>
+          <td class="text-right">{{cart.totalSum|currency:'USD':true}}</td>
         </tr>
       </tfoot>
       </table>
       <button *ngIf ="cart.items.length" class="btn btn-danger btn-sm clearSize" (click)="clearCart()">clear cart</button>
       <a *ngIf ="cart.items.length" class="btn btn-warning btn-sm checkSize" routerLink="/check-out">check out</a>
-      <p *ngIf ="!cart.items.length" class="text-center">your cart misses items.. :(</p>
+      <p *ngIf ="!cart.items.length" class="text-center">your cart misses you.. :(</p>
 </ng-container>
 
 

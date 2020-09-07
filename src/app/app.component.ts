@@ -17,7 +17,7 @@ export class AppComponent {
         let returnurl = localStorage.getItem('returnUrl');
         if(!returnurl) return;
         route.navigateByUrl(returnurl);
-        localStorage.clear();
+        localStorage.removeItem('returnurl');
       
     })
   }

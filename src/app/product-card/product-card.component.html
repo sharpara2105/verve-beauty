@@ -1,6 +1,6 @@
 <div class="card-deck">
         <div *ngIf="product.title" class="card">
-          <img *ngIf= "product.imageUrl" class="card-img imgsize" [src]="product.imageUrl"  alt="Card image cap">
+          <img *ngIf= "product.imageUrl" class="card-img imgsize" [src]="product.imageUrl"  alt="">
           <div class="card-body">
             <h4 class="card-title">{{product.title}}</h4>
             <p class="card-text">{{product.price|currency :'USD':true}}</p>
@@ -9,7 +9,6 @@
                 <ng-template #updateQuantity>
                   <app-product-quantity [product]="product" [shoppingCart]="shoppingCart"></app-product-quantity>
                 </ng-template>
-               
             </div>
           </div>
         </div>

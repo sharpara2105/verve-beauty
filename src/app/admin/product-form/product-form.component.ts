@@ -27,13 +27,14 @@ export class ProductFormComponent{
     }
    }
    save(p){
-     if(this.id){ //bec this time id would be the 'key' only and not new !
+     if(this.id !='new'){ //bec this time id would be the 'key' only and not new !
        this.saveproduct.update(this.id,p);
        this.router.navigate(['admin/products']);
        return;
      }
-     this.saveproduct.create(p);
-     this.router.navigate(['admin/products']);
+      this.saveproduct.create(p);
+      this.router.navigate(['admin/products']);
+     
    }
    delete()
    {
