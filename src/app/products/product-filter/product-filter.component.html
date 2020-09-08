@@ -1,15 +1,15 @@
-<div class="sticky-top">
-<div class="list-group">
-    <a routerLink="/" [queryParams] = "{category:c.name}" 
+<div [class.sticky-top]="!home">
+<div class="list-group" [class.list-group-horizontal]="home">
+    <a routerLink="/product" [queryParams] = "{category:c.name}" 
     [class.active]="category===c.name" 
     *ngFor="let c of categories$|async" 
     class="list-group-item list-group-item-action">
       {{c.name}}
     </a>
-    <a routerLink='/' 
+    <a routerLink='/product' 
     class="list-group-item list-group-item-action" 
     [class.active]="!category">
       All categories
-    </a>
+    </a>     
   </div>
 </div>

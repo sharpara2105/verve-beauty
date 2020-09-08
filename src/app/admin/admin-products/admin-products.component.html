@@ -2,7 +2,25 @@
 <p>
   <input type="text" class= "form-control" placeholder="search..." #query (keyup)= "filter(query.value)">
 </p>
-<table  #d datatable class="table table-light row-border hover" [dtOptions]="dtOptions">
+ <table  class="table table-bordered">
+  <thead class="table-dark">
+    <tr >
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let e of filteredProducts">
+          <td>{{e.title}}</td>
+          <td>{{e.price}}</td>
+          <td>
+            <a [routerLink] = "['/admin/products/',e.key]"> Edit </a> 
+        </td>
+        </tr> 
+  </tbody>
+  </table> 
+<!-- <table  #d datatable class="table table-light row-border hover" [dtOptions]="dtOptions">
     <thead>
       <tr  class="table-dark">
         <th scope="col">Title</th>
@@ -19,4 +37,4 @@
           </td>
           </tr> 
     </tbody>
-    </table>
+    </table> -->

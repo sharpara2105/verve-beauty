@@ -1,4 +1,8 @@
 .imgSize{
-    height:300px ;
-    width : 900px;
+    height: 700px;
+}
+.banner{
+    border-style: inset;
+    border-width: 10px;
+    border-color: rgb(180, 132, 9);
 }

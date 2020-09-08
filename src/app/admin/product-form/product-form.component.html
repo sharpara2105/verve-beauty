@@ -37,12 +37,9 @@
       <label for="basic-url">Image URL</label>
       <div class="input-group mb-3">
       <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">https://</span>
+          <span class="input-group-text" id="basic-addon3">(e.g, https://..)</span>
       </div>
       <input required #imageurl = "ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-      <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon3">.com</span>
-      </div>
       <div class="alert alert-danger" *ngIf="imageurl.touched && imageurl.invalid">
           imageurl is required
       </div>

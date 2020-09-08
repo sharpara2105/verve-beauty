@@ -8,6 +8,7 @@ import { CategoryService } from 'src/app/category.service';
 })
 export class ProductFilterComponent implements OnInit {
   @Input('category') category;
+  @Input('home')home:boolean;
   categories$;
   constructor(private categoryservice: CategoryService) { 
     this.categories$ = this.categoryservice.getCategories();

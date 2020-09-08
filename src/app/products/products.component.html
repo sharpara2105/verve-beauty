@@ -3,7 +3,6 @@
   <product-filter [category]="category"></product-filter>
   </div>
 <div class = "col-9">
-  <app-carousel></app-carousel>
   <div class="container">
   <div class = "row" *ngIf="cart$|async as cart">
     <ng-container *ngFor="let p of filteredProduct;let i=index">

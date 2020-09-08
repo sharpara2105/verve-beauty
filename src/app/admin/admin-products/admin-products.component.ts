@@ -11,7 +11,7 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
   elem=[];
   filteredProducts=[];
   Subscription : Subscription;
-  dtOptions: DataTables.Settings = {};
+  // dtOptions: DataTables.Settings = {};
   constructor(private productservice :ProductService) { 
   }
 
@@ -24,9 +24,17 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
       }
     }) 
     //that.filteredProducts = that.elem.slice() ----> not working , that's why pushed it into the filteredProducts array
-    this.dtOptions = {
-      searching:false, 
-    }
+    // this.dtOptions = {
+    //   searching:false, 
+    //   'columnDefs': [ {
+
+    //     'targets': [2,3], /* column index */
+    
+    //     'orderable': false, /* true or false */
+    
+    //  }],
+    
+    // }
   }
   ngOnDestroy(){
     this.Subscription.unsubscribe();

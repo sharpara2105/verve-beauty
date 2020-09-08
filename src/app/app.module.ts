@@ -37,6 +37,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ShoppingCartSummmaryComponent } from './shopping-cart-summmary/shopping-cart-summmary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { HomeComponent } from './home/home.component';
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ firebase.initializeApp(environment.firebase);
     OrderSuccessComponent,
     ShoppingCartSummmaryComponent,
     ShippingFormComponent,
-    CarouselComponent
+    CarouselComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +74,10 @@ firebase.initializeApp(environment.firebase);
     RouterModule.forRoot([
       {
         path : '',
+        component: HomeComponent
+    },
+      {
+        path : 'product',
         component: ProductsComponent
     },
     {
