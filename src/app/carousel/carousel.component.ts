@@ -8,7 +8,8 @@ import { NgbSlideEvent, NgbSlideEventSource,NgbCarousel } from '@ng-bootstrap/ng
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  // images = [1, 2, 3].map(() => `https://picsum.photos/900/250?random&t=${Math.random()}`);
+  images=['assets/static/verve2.png','assets/static/vb.png','assets/static/PinkLogo.png'];
   showNavigationArrows = true;
   showNavigationIndicators = true;
   pauseOnHover = true;
@@ -27,23 +28,23 @@ export class CarouselComponent implements OnInit {
     // console.log(NgbSlideEventSource.INDICATOR);
     // console.log(NgbSlideEventSource.ARROW_RIGHT);
   }
-  startCarousel() {
-    this.carousel.cycle();
-  }
+  // startCarousel() {
+  //   this.carousel.cycle();
+  // }
 
-  pauseCarousel() {
-    this.carousel.pause();
-  }
+  // pauseCarousel() {
+  //   this.carousel.pause();
+  // }
 
-  moveNext() {
-    this.carousel.next();
-  }
+  // moveNext() {
+  //   this.carousel.next();
+  // }
 
-  getPrev() {
-    this.carousel.prev();
-  }
+  // getPrev() {
+  //   this.carousel.prev();
+  // }
 
-  goToSlide(slide) {
-    this.carousel.select(slide);
-  }
+  // goToSlide(slide) {
+  //   this.carousel.select(slide);
+  // }
 }
